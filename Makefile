@@ -5,7 +5,7 @@ PROG=dcalc
 all: $(PROG)
 
 $(PROG): $(PROG).cpp exprtk.hpp
-	g++ -o $@ $(PROG).cpp
+	g++ -O3 -o $@ $(PROG).cpp
 
 install: $(PROG)
 	#echo DESTDIR=$(DESTDIR)
