@@ -1,0 +1,19 @@
+_dcalc() {
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="-h --help -v --version -c --calculate -rc --raw-calculate"
+
+    case "${prev}" in
+        -h|--help|-v|--version|-c|--calculate|-rc|--raw-calculate)
+            return 0
+            ;;
+    esac
+
+    if [[ "${cur}" == -* ]]; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+complete -F _dcalc dcalc
